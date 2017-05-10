@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: FirstStation
+  bikes: 1
+  distance: 1.53
+
+two:
+  name: SecondStation
+  bikes: 12
+  distance: 1.55

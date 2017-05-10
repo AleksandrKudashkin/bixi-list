@@ -1,0 +1,32 @@
+<h1>
+  Wanna take BIXI bike?
+</h1>
+Last update: <%= @last_update.strftime("%F %T") if @last_update %>
+<p />
+<%= form_tag stations_path, method: :get do %>
+  <%= label :min_distance, 'Select the minimum distance from 0 to 50 Km' %>
+  <%= number_field_tag :min_distance, @min_distance, { min: 0, max: 50, step: 0.5 } %>
+  <%= submit_tag 'filter' %>
+<% end %>
+<p />
+Here is a list of <%= PAGE_LIMIT %> nearest stations with bikes available
+<table>
+  <tr>
+    <th>Distance, Km</th>
+    <th>Station</th>
+    <th>Bikes</th>
+  </tr>
+  <% @stations.each do |station| %>
+    <tr align="center">
+      <td>
+        <%= number_with_precision station.distance, precision: 2 %> 
+      </td>
+      <td align="left">
+        <%= station.name %>
+      </td>
+      <td>
+        <%= station.bikes %>
+      </td>
+    </tr>
+  <% end %>
+</table>
